@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
 
     // Awake is called before Start()
     void Awake(){
+
+        Screen.SetResolution(1920, 1080, true);
         controls = new InputMaster();
         controls.Player.Fire.performed += _ => isFired = true;
         controls.Player.Fire.canceled += _ =>  isFired = false;
