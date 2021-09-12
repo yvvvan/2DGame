@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     bool isFired = false;
     int holdFire= 0;
     // character status
-    int attackDelay = 60; // in frames
+    int attackDelay = 24; // in frames
 
     // Awake is called before Start()
     void Awake(){
@@ -62,8 +62,6 @@ public class Player : MonoBehaviour
         // aim 
         Vector3 movementCrossHair =  Vector3.zero;
         if (moveCrossHair.magnitude > 0.0f){
-            Debug.Log(moveCrossHair);
-            Debug.Log(transform.position);
             // if is aming
             crossHair.SetActive(true);
             controls.Player.Fire.Enable();

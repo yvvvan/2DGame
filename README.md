@@ -34,3 +34,4 @@ from [Itch.io](https://itch.io/game-assets/free)
 | [4 Directional character](https://lionheart963.itch.io/4-directional-character)     | Character      |   [Warren Clark](https://lionheart963.itch.io/) |
 |[Crosshair Pack](https://kenney-assets.itch.io/crosshair-pack)|Component|[Kenney (Assets)](https://kenney-assets.itch.io/)|
 |[Slash Effect Sprite](https://yudemgoy.itch.io/slash-effect-sprite)|Component|[Yudemgoy](https://yudemgoy.itch.io/)|
+
