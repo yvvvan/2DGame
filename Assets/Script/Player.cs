@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public InputMaster controls;
     public GameObject crossHair;
     public GameObject slashPrefab;
+    public Rigidbody2D rb;
     // movement input
     Vector2 move = Vector2.zero;
     // aiming input
@@ -20,6 +21,8 @@ public class Player : MonoBehaviour
     int holdFire= 0;
     // character status
     int attackDelay = 24; // in frames
+    
+    
 
     // Awake is called before Start()
     void Awake(){
@@ -57,7 +60,8 @@ public class Player : MonoBehaviour
         moveAnimator.SetFloat("MoveHorizontal", movement.x);
         moveAnimator.SetFloat("MoveVertical", movement.y);
         moveAnimator.SetFloat("MoveMagnitude", movement.magnitude);
-        transform.position = transform.position + movement*Time.deltaTime;
+        //transform.position = transform.position + movement*Time.deltaTime;
+        rb.velocity=new Vector2(movement.x, movement.y);
 
         // aim 
         Vector3 movementCrossHair =  Vector3.zero;

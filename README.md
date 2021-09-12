@@ -24,7 +24,8 @@ Learn how to use unity
 1. Aseprite
 2. Child Object
 3. Split Top Body and Bottom Body
-
+4. Scene
+5. Collider
 
 ## Material
 from [Itch.io](https://itch.io/game-assets/free)
@@ -34,4 +35,4 @@ from [Itch.io](https://itch.io/game-assets/free)
 | [4 Directional character](https://lionheart963.itch.io/4-directional-character)     | Character      |   [Warren Clark](https://lionheart963.itch.io/) |
 |[Crosshair Pack](https://kenney-assets.itch.io/crosshair-pack)|Component|[Kenney (Assets)](https://kenney-assets.itch.io/)|
 |[Slash Effect Sprite](https://yudemgoy.itch.io/slash-effect-sprite)|Component|[Yudemgoy](https://yudemgoy.itch.io/)|
-
+|[Rogue Fantasy Castle](https://szadiart.itch.io/rogue-fantasy-catacombs) | Scene | [Szadi art.](https://szadiart.itch.io/)
