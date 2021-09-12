@@ -13,20 +13,24 @@ Learn how to use unity
 3. Keyboard Input & Joystick Input
 4. Movement with Blend Tree II
 
+
 ### 2 **Input System**
 1. adjust C# code with Input System
-2. Aiming Function
+2. Aiming Function with Controller
+3. Attack, Continus Attack
+4. Aiming Function with Mouse, Mouse Frame to World Frame
 
 ### 3 Design
 1. Aseprite
 2. Child Object
+3. Split Top Body and Bottom Body
 
 
 ## Material
 from [Itch.io](https://itch.io/game-assets/free)
 | Name          | Sort            | Author           | 
 | ------------- |:---------------:| ----------------:|
-| [Wizard Pack](https://luizmelo.itch.io/wizard-pack)     | Sprite | [LuizMelo](https://luizmelo.itch.io/) |
-| [4 Directional character](https://lionheart963.itch.io/4-directional-character)     | Sprite      |   [Warren Clark](https://lionheart963.itch.io/) |
+| [Wizard Pack](https://luizmelo.itch.io/wizard-pack)     | Character | [LuizMelo](https://luizmelo.itch.io/) |
+| [4 Directional character](https://lionheart963.itch.io/4-directional-character)     | Character      |   [Warren Clark](https://lionheart963.itch.io/) |
 |[Crosshair Pack](https://kenney-assets.itch.io/crosshair-pack)|Component|[Kenney (Assets)](https://kenney-assets.itch.io/)|
-
+|[Slash Effect Sprite](https://yudemgoy.itch.io/slash-effect-sprite)|Component|[Yudemgoy](https://yudemgoy.itch.io/)|

@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.7264151, g: 0.4444915, b: 0.31181026, a: 0}
+  m_BackGroundColor: {r: 0.27847987, g: 0.30018994, b: 0.3962264, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -237,8 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be326441e2f6ead488bc30e8cd4eca75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1401279815}
+  moveAnimator: {fileID: 1401279815}
+  attackAnimator: {fileID: 1401279815}
   crossHair: {fileID: 1838237339}
+  slashPrefab: {fileID: 4186909532986515398, guid: 7361c5285423fb04ba503772bdb11219, type: 3}
 --- !u!212 &1401279813
 SpriteRenderer:
   m_ObjectHideFlags: 0
