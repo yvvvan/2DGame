@@ -7,9 +7,9 @@
             "actions": [
                 {
                     "name": "Movement",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "cc6d0af0-7d11-4bd4-af1c-ad6fc78e8e18",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
@@ -23,25 +23,17 @@
                 },
                 {
                     "name": "Aim",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "37e01ed6-1d5c-410a-9d21-403787dbee42",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "MousePosition",
-                    "type": "Value",
-                    "id": "304002c1-d2eb-4b37-ba4d-fa2e237d54d2",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "MouseInput",
-                    "type": "Button",
-                    "id": "aad1a993-36b7-44ab-ba42-862cd25ae0e2",
-                    "expectedControlType": "Button",
+                    "name": "MousePosition",
+                    "type": "PassThrough",
+                    "id": "304002c1-d2eb-4b37-ba4d-fa2e237d54d2",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -97,7 +89,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "keyboard and mouse",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -108,7 +100,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "keyboard and mouse",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -130,7 +122,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "keyboard and mouse",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -152,7 +144,7 @@
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "gamepad",
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -214,23 +206,12 @@
                 },
                 {
                     "name": "",
-                    "id": "c4f7fe98-2412-436a-bbab-074348a37084",
+                    "id": "ceaa1014-9eb0-4cc1-8875-87f828cf02b3",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "keyboard and mouse",
                     "action": "MousePosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1bb945fc-721c-4bda-81f0-3d294a6156c3",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

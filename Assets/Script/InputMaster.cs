@@ -20,9 +20,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""cc6d0af0-7d11-4bd4-af1c-ad6fc78e8e18"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -36,25 +36,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Aim"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""37e01ed6-1d5c-410a-9d21-403787dbee42"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""MousePosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""304002c1-d2eb-4b37-ba4d-fa2e237d54d2"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""MouseInput"",
-                    ""type"": ""Button"",
-                    ""id"": ""aad1a993-36b7-44ab-ba42-862cd25ae0e2"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""MousePosition"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""304002c1-d2eb-4b37-ba4d-fa2e237d54d2"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -110,7 +102,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""keyboard and mouse"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -121,7 +113,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""keyboard and mouse"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -143,7 +135,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""keyboard and mouse"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -165,7 +157,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""gamepad"",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -227,23 +219,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c4f7fe98-2412-436a-bbab-074348a37084"",
+                    ""id"": ""ceaa1014-9eb0-4cc1-8875-87f828cf02b3"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""keyboard and mouse"",
                     ""action"": ""MousePosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1bb945fc-721c-4bda-81f0-3d294a6156c3"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MouseInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -286,7 +267,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
-        m_Player_MouseInput = m_Player.FindAction("MouseInput", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -340,7 +320,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_MousePosition;
-    private readonly InputAction m_Player_MouseInput;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -349,7 +328,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
-        public InputAction @MouseInput => m_Wrapper.m_Player_MouseInput;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -371,9 +349,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @MousePosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
-                @MouseInput.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseInput;
-                @MouseInput.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseInput;
-                @MouseInput.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseInput;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -390,9 +365,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
-                @MouseInput.started += instance.OnMouseInput;
-                @MouseInput.performed += instance.OnMouseInput;
-                @MouseInput.canceled += instance.OnMouseInput;
             }
         }
     }
@@ -421,6 +393,5 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
-        void OnMouseInput(InputAction.CallbackContext context);
     }
 }

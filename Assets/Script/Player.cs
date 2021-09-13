@@ -2,50 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
+//[RequireComponent(typeof(InputMaster))]
 public class Player : MonoBehaviour
-{
-    public Animator moveAnimator;
-    public Animator attackAnimator;
+{   
+    // character status
+    [Header("Character Status")]
+    public int attackDelay = 20; // in frames
+    public float moveSpeed = 1.0f;
+
+    [Header("Setting")]
+    public float Y_SHIFT = 0.22f; // center.y - pilvot.y
+
+    [Header("References")]
+    public Animator animator;
     public InputMaster controls;
     public GameObject crossHair;
     public GameObject slashPrefab;
     public Rigidbody2D rb;
+
+    // INPUT
     // movement input
     Vector2 move = Vector2.zero;
     // aiming input
     Vector2 moveCrossHair = Vector2.zero;
-    Vector2 moveCrossHair_mouse = Vector2.zero;
+    Vector3 mousePosition = Vector3.zero;
     // attack input
+    bool isAimed = false;
     bool isFired = false;
-    int holdFire= 0;
-    // character status
-    int attackDelay = 24; // in frames
-    
-    
+    int holdFire = -1;
 
+    // GAME START ------------------------------------------------
     // Awake is called before Start()
     void Awake(){
 
         Screen.SetResolution(1920, 1080, true);
         controls = new InputMaster();
-        controls.Player.Fire.performed += _ => isFired = true;
-        controls.Player.Fire.canceled += _ =>  isFired = false;
-        controls.Player.Fire.canceled += _ => holdFire = 0;
-        controls.Player.Movement.performed += ctx => move = ctx.ReadValue<Vector2>();
-        controls.Player.Movement.canceled += _ => move = Vector2.zero;
-        controls.Player.Aim.performed += ctx => moveCrossHair = ctx.ReadValue<Vector2>();
-        controls.Player.Aim.canceled += _ => moveCrossHair = Vector2.zero;
-        controls.Player.MousePosition.performed += ctx => MousePosition(ctx.ReadValue<Vector2>());
-    }
-
-    // must do
-    private void OnEnable(){
-        controls.Enable();
-    }
-
-    private void OnDisable(){
-        controls.Disable();
     }
 
     // Start is called before the first frame update
@@ -58,58 +51,79 @@ public class Player : MonoBehaviour
     void Update()
     {   
         // move
-        Vector3 movement = new Vector3(move.x, move.y,0.0f);
-        moveAnimator.SetFloat("MoveHorizontal", movement.x);
-        moveAnimator.SetFloat("MoveVertical", movement.y);
-        moveAnimator.SetFloat("MoveMagnitude", movement.magnitude);
-        //transform.position = transform.position + movement*Time.deltaTime;
-        rb.velocity=new Vector2(movement.x, movement.y);
+        animator.SetFloat("MoveHorizontal", move.x);
+        animator.SetFloat("MoveVertical", move.y);
+        animator.SetFloat("MoveMagnitude", move.magnitude);
+        rb.velocity=new Vector2(move.x, move.y)*moveSpeed;
 
         // aim 
-        Vector3 movementCrossHair =  Vector3.zero;
         if (moveCrossHair.magnitude > 0.0f){
-            // if is aming
+            // if is aiming
+            isAimed = true;
             crossHair.SetActive(true);
             controls.Player.Fire.Enable();
-            movementCrossHair = new Vector3(moveCrossHair.x, moveCrossHair.y,0.0f);
-            movementCrossHair.Normalize();
-            crossHair.transform.localPosition = movementCrossHair;
-
+            moveCrossHair.Normalize();
+            crossHair.transform.localPosition = moveCrossHair;
         } else {
+            // if not aiming
+            isAimed = false;
             crossHair.SetActive(false);
             controls.Player.Fire.Disable();  
         }
         
         // attack
-        attackAnimator.SetFloat("AttackHorizontal", movementCrossHair.x);
-        attackAnimator.SetFloat("AttackVertical", movementCrossHair.y);
-        attackAnimator.SetFloat("AttackMagnitude", movementCrossHair.magnitude);  
-        attackAnimator.SetBool("isAttacked", isFired);  
-        if (isFired) {
-            if (holdFire % attackDelay == 0){
-                Fire();
+        animator.SetFloat("AttackHorizontal", moveCrossHair.x);
+        animator.SetFloat("AttackVertical", moveCrossHair.y);
+        animator.SetFloat("AttackMagnitude", moveCrossHair.magnitude);  
+        animator.SetBool("isAttacked", isFired);  
+        if (isFired && isAimed) {
+            if (holdFire < 0 || holdFire>=attackDelay){
+                holdFire = 0;
+                Vector2 slashDirection = new Vector2(moveCrossHair.x, moveCrossHair.y);    
+                slashDirection.Normalize();
+                Vector3 centerPosition = transform.position;
+                centerPosition.y += Y_SHIFT;
+                GameObject slash = Instantiate(slashPrefab, centerPosition, Quaternion.identity);
+                slash.GetComponent<Rigidbody2D>().velocity = slashDirection*2;
+                slash.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(slashDirection.y, slashDirection.x)*Mathf.Rad2Deg);
+                Destroy(slash, 2.0f);
             }
+        } 
+        if (holdFire >= 0) {
             holdFire += 1;
         }
-        
-        
+    }
+    // GAME END --------------------------------------------------
+
+    // INPUT START -----------------------------------------------
+    public void OnMove(CallbackContext context){
+        move = context.ReadValue<Vector2>();
+    }
+    
+
+    public void OnAim(CallbackContext context){
+        moveCrossHair = context.ReadValue<Vector2>();
     }
 
-
-    void Fire(){
-        Vector2 slashDirection = new Vector2(moveCrossHair.x, moveCrossHair.y);    
-        slashDirection.Normalize();
-        GameObject slash = Instantiate(slashPrefab, transform.position, Quaternion.identity);
-        slash.GetComponent<Rigidbody2D>().velocity = slashDirection*2;
-        slash.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(slashDirection.y, slashDirection.x)*Mathf.Rad2Deg);
-        Destroy(slash, 2.0f);
+    public void OnFire(CallbackContext context){
+        isFired = context.action.triggered;
     }
 
-    void MousePosition(Vector2 position){
-        Vector3 mousePosition = position;
+    public void OnMousePosition(CallbackContext context){
+        mousePosition = context.ReadValue<Vector2>();
         mousePosition.z = 20;
         mousePosition =  Camera.main.ScreenToWorldPoint(mousePosition) - transform.position;
         moveCrossHair.x = mousePosition.x;
-        moveCrossHair.y = mousePosition.y;
+        moveCrossHair.y = mousePosition.y - Y_SHIFT;
     }
+
+    // must do
+    private void OnEnable(){
+        controls.Enable();
+    }
+
+    private void OnDisable(){
+        controls.Disable();
+    }
+    // INPUT END -------------------------------------------------
 }
