@@ -27,15 +27,17 @@ Learn how to use unity
 2. :white_check_mark: Attack (Generate Object) [1](https://www.youtube.com/watch?v=qMRrRQ587qQ&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=6)[2](https://www.youtube.com/watch?v=_QVAC69su3Q&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=7)
 3. :white_large_square: Better Attack Animation (Split Top and Bottom & State Machine sych.) [1](https://www.youtube.com/watch?v=XWDXZeVODxQ&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=8) [2](https://www.youtube.com/watch?v=aXtd5KFf_iE&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=9) [3](https://www.youtube.com/watch?v=lh3uam5VUaQ&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=10)
 4. :white_check_mark: [Collider](https://www.youtube.com/watch?v=Cry7FOHZGN4&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=13)
-5. :white_large_square: [Hit Detection and Damage](https://www.youtube.com/watch?v=vLIOpae8uAc&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=16)
-6. :white_large_square: [Respawn](https://www.youtube.com/watch?v=o6I2HdGxhME&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=17)
+5. :white_check_mark: [Hit Detection](https://www.youtube.com/watch?v=vLIOpae8uAc&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=16)
+6. :white_check_mark: [Respawn](https://www.youtube.com/watch?v=o6I2HdGxhME&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=17)
 
 
-### 4 Design
+### 4 Design and Structure
 1. :white_check_mark: [Aseprite - Compile it for free](https://www.youtube.com/watch?v=WKeNJh_gIJU)
 2. :white_large_square: Sprite
 3. :white_check_mark: [Sorting Order, Pilvot and Grids](https://www.youtube.com/watch?v=UWhXS6iVsUM&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=12)
 4. :white_check_mark: Scene
+5. :white_check_mark: [UnityEvents](https://www.youtube.com/watch?v=38D8AbR8TVU&list=PLM83Z6G5iM3mnAd3MVJeZh7b7ilHd73V5&index=23)
+6. :white_check_mark:[Game States & ScriptableObjects ](https://www.youtube.com/watch?v=55eB8_CctAM&list=PLM83Z6G5iM3mnAd3MVJeZh7b7ilHd73V5&index=24)
 
 ### 0 Sum Up
 1. Good Sum up But not will Input System [1](https://www.youtube.com/watch?v=yfsqai3ivyA&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=14) [2](https://www.youtube.com/watch?v=8uD2ATIot0A&list=PLM83Z6G5iM3k48356VU6e-oXWl_uwwq4F&index=15)

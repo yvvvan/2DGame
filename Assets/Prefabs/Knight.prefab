@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8717710637962478585}
   m_Layer: 0
   m_Name: Knight
-  m_TagString: Untagged
+  m_TagString: character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,8 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be326441e2f6ead488bc30e8cd4eca75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ATK_DELAY: 20
-  MOVE_SPEED: 1
+  attackDelay: 80
+  moveSpeed: 1
+  slashSpeed: 2
+  health: 100
+  Y_OFFSET: 0.22
   animator: {fileID: 8717710639869626171}
   crossHair: {fileID: 8717710639029949671}
   slashPrefab: {fileID: 4186909532986515398, guid: 7361c5285423fb04ba503772bdb11219, type: 3}
@@ -144,7 +147,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 304002c1-d2eb-4b37-ba4d-fa2e237d54d2
     m_ActionName: Player/MousePosition[/Mouse/position]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: keyboard and mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -427,8 +430,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be326441e2f6ead488bc30e8cd4eca75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ATK_DELAY: 20
-  MOVE_SPEED: 1
+  attackDelay: 20
+  moveSpeed: 1
+  slashSpeed: 2
+  health: 100
+  Y_OFFSET: 0.22
   animator: {fileID: 8717710639869626171}
   crossHair: {fileID: 8717710639029949671}
   slashPrefab: {fileID: 4186909532986515398, guid: 7361c5285423fb04ba503772bdb11219, type: 3}

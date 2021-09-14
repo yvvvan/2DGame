@@ -5,19 +5,21 @@ using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 //[RequireComponent(typeof(InputMaster))]
-public class Player : MonoBehaviour
+public class Knight : MonoBehaviour
 {   
     // character status
     [Header("Character Status")]
-    public int attackDelay = 20; // in frames
+    public int attackDelay = 80; // in frames
     public float moveSpeed = 1.0f;
+    public float slashSpeed = 2.0f;
+    public int health = 100;
 
     [Header("Setting")]
-    public float Y_SHIFT = 0.22f; // center.y - pilvot.y
+    public float Y_OFFSET = 0.22f; // center.y - pilvot.y
 
     [Header("References")]
     public Animator animator;
-    public InputMaster controls;
+    public InputController controls;
     public GameObject crossHair;
     public GameObject slashPrefab;
     public Rigidbody2D rb;
@@ -38,7 +40,7 @@ public class Player : MonoBehaviour
     void Awake(){
 
         Screen.SetResolution(1920, 1080, true);
-        controls = new InputMaster();
+        controls = new InputController();
     }
 
     // Start is called before the first frame update
@@ -82,10 +84,13 @@ public class Player : MonoBehaviour
                 Vector2 slashDirection = new Vector2(moveCrossHair.x, moveCrossHair.y);    
                 slashDirection.Normalize();
                 Vector3 centerPosition = transform.position;
-                centerPosition.y += Y_SHIFT;
+                centerPosition.y += Y_OFFSET;
                 GameObject slash = Instantiate(slashPrefab, centerPosition, Quaternion.identity);
-                slash.GetComponent<Rigidbody2D>().velocity = slashDirection*2;
-                slash.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(slashDirection.y, slashDirection.x)*Mathf.Rad2Deg);
+                Slash slashScript = slash.GetComponent<Slash>();
+                slashScript.velocity = slashDirection*slashSpeed;
+                slashScript.knight = gameObject;
+                slashScript.degree = Mathf.Atan2(slashDirection.y, slashDirection.x)*Mathf.Rad2Deg;
+                slash.transform.Rotate(0.0f, 0.0f, slashScript.degree);
                 Destroy(slash, 2.0f);
             }
         } 
@@ -114,7 +119,7 @@ public class Player : MonoBehaviour
         mousePosition.z = 20;
         mousePosition =  Camera.main.ScreenToWorldPoint(mousePosition) - transform.position;
         moveCrossHair.x = mousePosition.x;
-        moveCrossHair.y = mousePosition.y - Y_SHIFT;
+        moveCrossHair.y = mousePosition.y - Y_OFFSET;
     }
 
     // must do
