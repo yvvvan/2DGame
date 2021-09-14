@@ -3,4 +3,5 @@ Logs/
 Temp/
 Material/
 Build/
+!docs/Build/
 *.zip
