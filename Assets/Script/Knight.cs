@@ -9,7 +9,7 @@ public class Knight : MonoBehaviour
 {   
     // character status
     [Header("Character Status")]
-    public int attackDelay = 80; // in frames
+    public int attackDelay = 20; // in frames
     public float moveSpeed = 1.0f;
     public float slashSpeed = 2.0f;
     public int health = 100;

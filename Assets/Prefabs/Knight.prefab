@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be326441e2f6ead488bc30e8cd4eca75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDelay: 80
+  attackDelay: 20
   moveSpeed: 1
   slashSpeed: 2
   health: 100
