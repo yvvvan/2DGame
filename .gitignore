@@ -3,5 +3,7 @@ Logs/
 Temp/
 Material/
 Build/
-!docs/Build/
 *.zip
+
+# eception for github page
+!docs/Build/

@@ -38,8 +38,6 @@ public class Knight : MonoBehaviour
     // GAME START ------------------------------------------------
     // Awake is called before Start()
     void Awake(){
-
-        Screen.SetResolution(1920, 1080, true);
         controls = new InputController();
     }
 
